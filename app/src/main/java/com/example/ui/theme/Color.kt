@@ -24,6 +24,10 @@ val Gold = Color(0xFFFFD700) // Beautiful Gold
 val Background = Color(0xFF050810) // Elegant Dark deep backplate
 val Surface = Color(0xFF111827) // Elegant Dark card surface
 val NavyContainer = Color(0xFF161B2E) // Auto detect panel highlights
+val SuccessLight = Color(0xFF14532D) // Dark-theme friendly deep green highlight
+val ErrorLight = Color(0xFF7F1D1D) // Dark-theme friendly deep red highlight
+val GoldContainer = Color(0xFF3F3715) // Dark-theme friendly golden highlight
+val SurfaceVariant = Color(0xFF1F2937) // Slate-800
 val GuruPanel = Color(0xFF111827)
 val MuridPanel = Color(0xFF111827)
 

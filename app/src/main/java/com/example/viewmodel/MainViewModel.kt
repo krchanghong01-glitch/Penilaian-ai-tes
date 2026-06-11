@@ -333,6 +333,16 @@ class MainViewModel : ViewModel() {
                 bubbleScores = mapOf("✏️ " to 92)
             )
         )
+        results.add(
+            CropSoalData(
+                nomor = 31,
+                kunci = "Saling menghormati, mempelajari tarian daerah, tidak membeda-bedakan suku",
+                jawaban = "saling menghargai budaya lain, belajar tari piring, berteman dengan semua suku",
+                status = "BENAR",
+                confidence = 90,
+                bubbleScores = mapOf("✏️ " to 88)
+            )
+        )
 
         _cropResults.value = results
         _nilaiAkhir.value = (correctCount.toFloat() / 20f) * 100f
