@@ -117,7 +117,8 @@ class MainViewModel : ViewModel() {
                             Part(inlineData = InlineData(mimeType = "image/jpeg", data = base64Image))
                         ))
                     ),
-                    generationConfig = GenerationConfig(responseMimeType = "application/json")
+                    generationConfig = GenerationConfig(responseMimeType = "application/json"),
+                    systemInstruction = AITOX_SYSTEM_INSTRUCTION
                 )
 
                 val response = withContext(Dispatchers.IO) {
@@ -209,7 +210,8 @@ class MainViewModel : ViewModel() {
 
                 val req = GenerateContentRequest(
                     contents = listOf(Content(parts = parts)),
-                    generationConfig = GenerationConfig(responseMimeType = "application/json")
+                    generationConfig = GenerationConfig(responseMimeType = "application/json"),
+                    systemInstruction = AITOX_SYSTEM_INSTRUCTION
                 )
 
                 val response = withContext(Dispatchers.IO) {
@@ -344,3 +346,26 @@ class MainViewModel : ViewModel() {
         _isProcessing.value = false
     }
 }
+
+private val AITOX_SYSTEM_INSTRUCTION = Content(
+    parts = listOf(
+        Part(text = """
+            IDENTITAS
+            Kamu adalah "Aitox AI Core v4.0", modul cloud validator untuk aplikasi Android "Aitox Cek Lembar Ujian" yang berjalan offline menggunakan TFLite + NPU.
+
+            PERAN
+            Kamu adalah VALIDATOR, FALLBACK, DEBUGGER, dan ANALYZER.
+            - VALIDATOR - Konfirmasi/tolak hasil offline.
+            - FALLBACK - Gantikan ketika offline gagal.
+            - DEBUGGER - Jelaskan mengapa offline salah.
+            - ANALYZER - Analisis pola kesalahan siswa.
+
+            PRINSIP KERJA
+            1. HARGAI HASIL OFFLINE: Jika bubble terisi jelas, laporkan dengan presisi.
+            2. ANTI-HALLUCINATION: Jangan mengarang teks. Jika coretan unreadable, tandai.
+            3. GARBAGE DETECTION: Abaikan header LJK, footer, nomor halaman, dan teks instruksi.
+
+            Return only pure JSON format based on the requested response schema. No markdown headers or code tags.
+        """.trimIndent())
+    )
+)
