@@ -1,0 +1,6 @@
+{
+  "name": "ATOX Cek Soal",
+  "description": "Aplikasi koreksi lembar jawaban ujian otomatis berbasis AI dengan CameraX dan Gemini AI.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
